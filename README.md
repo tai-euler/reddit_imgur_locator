@@ -9,7 +9,7 @@ written in python 2.7 with praw(The Python Reddit API Wrapper)
 3. ```python reddit_imgur_locator.py```
 
 ## Note: 
-1. add your own client_id='your_id',client_secret="your_secret", password='your_pass' and username='your_username' 
+1. add your own  ```client_id='your_id'```,```client_secret="your_secret"```, ```password='your_pass'``` and  ```username='your_username' ```
 in the reddit_imgur_locator.py.
 
 You will find that in your reddit.com account when you create a script https://ssl.reddit.com/prefs/apps
