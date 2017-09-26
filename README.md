@@ -14,13 +14,12 @@ in the reddit_imgur_locator.py.
 
 You will find that in your reddit.com account when you create a script https://ssl.reddit.com/prefs/apps
 
-2. add your own subreddit for example I add "naturepics" --> 
-subreddit = reddit.subreddit(“naturepics”)
+2. add your own subreddit for example I add "naturepics": 
+```subreddit = reddit.subreddit(“naturepics”)```
 
-3. you can change the category and limit, how many topics should the script scrape by changing it here in the script
---> hot_category = subreddit.hot(limit=120)
-you can change to 
---> new_category = subreddit.new(limit=30)
+3. you can change the category and limit, how many topics should the script scrape by changing this line in the code:  ```hot_category = subreddit.hot(limit=120)```
+you can change to: 
+ ```new_category = subreddit.new(limit=30)```
 
 4. 
 
