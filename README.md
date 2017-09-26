@@ -21,7 +21,6 @@ You will find that in your reddit.com account when you create a script https://s
 you can change to: 
  ```new_category = subreddit.new(limit=30)```
 
-4. 
 
 ### troubleshooting: 
 1. ```pip3 install praw```
