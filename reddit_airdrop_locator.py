@@ -1,3 +1,5 @@
+# locate all the posts in cryptocurrency subreddits, where in the title the word "airdrop" is used
+
 
 import praw
 reddit = praw.Reddit(client_id='your_id',
