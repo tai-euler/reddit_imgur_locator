@@ -2,6 +2,8 @@
 written in python 2.7 with praw(The Python Reddit API Wrapper)
 
 praw latest documentation: ```praw.readthedocs.io/en/latest/```
+1. reddit_imgur_locator.py - locate imgur LINKS in the comments
+2. reddit_airdrop_locator.py - locate posts where the word "airdrop" is used(cryptocurrency)
 
 <img src="https://steemitimages.com/0x0/https://s26.postimg.org/kt2mmrnkp/21434163_493613564331005_3460030575690121216_n.jpg" alt="wolfiecindysmile" style="width:304px;height:228px;">
 
