@@ -1,3 +1,5 @@
+# locate all imgur links in the comments
+
 import praw
 reddit = praw.Reddit(client_id='your_id',
                      client_secret="your_secret", password='your_pass',
