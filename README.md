@@ -1,4 +1,4 @@
-# reddit_word_locator
+# reddit_word_locator_scripts
 written in python 2.7 with praw(The Python Reddit API Wrapper)
 
 praw latest documentation: ```praw.readthedocs.io/en/latest/```
