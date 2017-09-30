@@ -10,6 +10,7 @@ reddit = praw.Reddit(client_id='your_id',
                      
 cryptoSubreddits = ['icocrypto', 'CryptoCurrency', 'CryptoMarkets' ]
 
+print('try to visit ' + 'https://airdropalert.com/')
 
 # iterate through the subreddits in the array
 for oneSubreddit in cryptoSubreddits:
