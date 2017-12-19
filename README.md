@@ -15,16 +15,14 @@ praw latest documentation: ```praw.readthedocs.io/en/latest/```
 3. example script to run : ```python reddit_imgur_locator.py```
 
 ## Note: 
-1. add your own  ```client_id='your_id'```,```client_secret="your_secret"```, ```password='your_pass'``` and  ```username='your_username' ```
-in the python file.
+1. add your own ```client_id='your_id'```,```client_secret="your_secret"```, ```password='your_pass'``` and  ```username='your_username' ```
+in the python file. (the data can be found here https://ssl.reddit.com/prefs/apps)
 
-You will find that in your reddit.com account when you create a script https://ssl.reddit.com/prefs/apps
-
-2. add your own subreddit for example I add "naturepics": 
+2. add your own subreddit for example I add "naturepics" to the code: 
 ```subreddit = reddit.subreddit(“naturepics”)```
 
 3. you can change the category and limit, how many topics should the script scrape by changing this line in the code:  ```hot_category = subreddit.hot(limit=120)```
-you can change to: 
+optionaly you can change category(from "hot" to "new"): 
  ```new_category = subreddit.new(limit=30)```
 
 
