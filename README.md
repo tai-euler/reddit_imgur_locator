@@ -22,6 +22,7 @@ in the python file. (the data can be found here https://ssl.reddit.com/prefs/app
 ```subreddit = reddit.subreddit(“naturepics”)```
 
 3. you can change the category and limit, how many topics should the script scrape by changing this line in the code:  ```hot_category = subreddit.hot(limit=120)```
+
 optionaly you can change category(from "hot" to "new"): 
  ```new_category = subreddit.new(limit=30)```
 
