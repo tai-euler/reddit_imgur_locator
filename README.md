@@ -1,5 +1,6 @@
 # reddit_scripts
-written in python 2.7 with praw(The Python Reddit API Wrapper)
+The scripts are based on python 2.7 
+using praw(The Python Reddit API Wrapper)
 
 praw latest documentation: ```praw.readthedocs.io/en/latest/```
 
