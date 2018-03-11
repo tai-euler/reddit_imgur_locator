@@ -37,6 +37,7 @@ for oneSubreddit in redditSubreddits:
                                #for comment in comments:
                                # instead of each request separate rather than grab a batch of comments
                                # like it does when checking the latest comments
+                                # so the script is a LOT FASTER THIS WAY
                                 for comment in subreddit.comments(limit=None):
                                     # find just the comments that contains an imgur link
                                     try:
