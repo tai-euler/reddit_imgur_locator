@@ -33,8 +33,11 @@ for oneSubreddit in redditSubreddits:
                                 #print(submission.title)
                                 # this gives us the comments and subcomments from the posts
                                # print (dir(submission))
-                                comments = submission.comments.list()
-                                for comment in comments:
+                              # comments = submission.comments.list()
+                               #for comment in comments:
+                               # instead of each request separate rather than grab a batch of comments
+                               # like it does when checking the latest comments
+                                for comment in subreddit.comments(limit=None):
                                     # find just the comments that contains an imgur link
                                     try:
                                         if 'imgur' in comment.body:
