@@ -1,3 +1,4 @@
+# python3
 # locate all imgur links in the comments
 
 import praw
@@ -7,46 +8,87 @@ reddit = praw.Reddit(client_id='your_id',
                      username='your_username')
 
 
-redditSubreddits = ['dogs', 'dogpictures' ]
+subredditList = ['dogs', 'dogpictures' ]
 
 
-# iterate through every subreddit from the array
+# the requests, loops and iterations
+# iterate through every subreddit from 'subredditList'
 # and find imgur URLs in the comments
-for oneSubreddit in redditSubreddits:
 
-                        subreddit = reddit.subreddit(oneSubreddit)
-                        print('subreddit: ' + oneSubreddit)
+# arrays for all the imgur links
+body_urls = []
 
-                        hot_category = subreddit.hot(limit=50)
-                        # we can print out he options to this object
-                        # ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__',
-                        # print(dir(hot_category))
 
+for actualSubreddit in subredditList:
+
+                        # make a subreddit praw class instance by handing the actualSubreddit over to the reddit object
+                        subreddit = reddit.subreddit(actualSubreddit)
+                        print(40*'-')
+                        print('Processing subreddit: ' + actualSubreddit)
+                        print(40*'-')
+                        
+                        type(subreddit)
+                        # <class 'praw.models.reddit.subreddit.Subreddit'>
+                        
+                        # example for 'display_name'
+                        subreddit.display_name
+                        # bustypetite
+                        
+                        # limit how deep you want to scrape the HOT category of submissions
+                        hot_category = subreddit.hot(limit=5)
+                        type(hot_category)
+                        # <class 'praw.models.listing.generator.ListingGenerator'>
+                        
+                        # to avoid a ban, sleep randomly between 1 and 7 seconds in every loop
+                        sleep(randint(1,7))
+                        
                         for submission in hot_category:
-                            # we can print out he options to this object
-                            # [ 'created_utc', 'likes', 'delete', 'edit', ...
-                            # print(dir(submission))
-
-
-                            # we skip the stickied posts on the beginning of the page
+                          
+                              # we skip the stickied posts on the beginning of the page
                             if not submission.stickied:
-                                #print(submission.title)
-                                # this gives us the comments and subcomments from the posts
-                               # print (dir(submission))
-                              # comments = submission.comments.list()
-                               #for comment in comments:
-                               # instead of each request separate rather than grab a batch of comments
-                               # like it does when checking the latest comments
-                                # so the script is a LOT FASTER THIS WAY
-                                for comment in subreddit.comments(limit=None):
+                            
+                                    for comment in subreddit.comments(limit=None):
                                     # find just the comments that contains an imgur link
-                                    try:
-                                        if 'imgur' in comment.body:
-                                            # give us title and url from post with imgur.com link from the comments
-                                            print (submission.title + ' : ')
-                                            print (submission.url)
-                                            print (submission.shortlink)
-                                            print(comment.body)
-                                            print(20*'-')
-                                    except Exception as msg:
-                                        print msg
+                                    
+                                        try:
+                                            if 'imgur' in comment.body:
+
+                                                # skip bot content
+                                                if 'I am a bot' in comment.body:
+                                                    continue
+                                                    
+                                                # encode bytes as UTF-8
+                                                string_comment = comment.body.encode('utf-8')
+                                                # make comment a string
+                                                string_comment2 = str(comment.body)
+                                               # string_comment2 = str(string_comment)
+                                                # remove white space and save in a list
+                                               
+                                                string_comment3 = string_comment2.split(" ")
+                                                
+                                                chars_to_remove = ["\\n","\\r","<",">","#","%","^","*","=",")","(",",","?","-","_","&","[","]","{","}","'"]
+                                                
+                                                # iterate through elements in list
+                                                for element in string_comment3:
+    
+                                                    if 'imgur' in element:
+            
+                                                        # iterate through elmement string to remove chars
+                                                        for char in chars_to_remove:
+                                                            # remove some unnecessary chars from the string 
+                                                            element = element.replace(char,"")
+                                                        
+                                                        # still messy links, so find imgur links in element
+                                                        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', element)
+                                                        # urls is a list, so iterate through and save urls
+                                                        for x in urls:
+                                                            body_urls.append(x)
+                                   
+                                        except Exception as msg:
+                                                    print (msg)
+
+                                              
+body_urls3 = set(body_urls)
+for element in body_urls3:
+    print(element)
+
