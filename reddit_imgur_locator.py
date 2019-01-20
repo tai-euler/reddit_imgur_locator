@@ -92,8 +92,9 @@ for actualSubreddit in subredditList:
                                         except Exception as msg:
                                                     print (msg)
 
-                                              
+# removing duplicates by converting a list to set()                                              
 body_urls3 = set(body_urls)
+# print out every element in the list
 for element in body_urls3:
     print(element)
 
