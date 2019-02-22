@@ -37,7 +37,7 @@ for actualSubreddit in subredditList:
                         
                         # example for 'display_name'
                         subreddit.display_name
-                        # bustypetite
+                        
                         
                         # limit how deep you want to scrape the HOT category of submissions
                         hot_category = subreddit.hot(limit=5)
