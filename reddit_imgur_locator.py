@@ -51,7 +51,8 @@ for actualSubreddit in subredditList:
                           
                               # we skip the stickied posts on the beginning of the page
                             if not submission.stickied:
-                            
+                                    body_urls.append(submission.url)
+                                
                                     for comment in subreddit.comments(limit=25):
                                     # find just the comments that contains an imgur link
                                     
