@@ -1,6 +1,10 @@
 # python3
 # locate all imgur links in the comments
 
+
+import os
+import argparse
+import requests
 import praw
 import re
 from random import randint
@@ -40,7 +44,7 @@ for actualSubreddit in subredditList:
                         
                         
                         # limit how deep you want to scrape the HOT category of submissions
-                        hot_category = subreddit.hot(limit=5)
+                        hot_category = subreddit.hot(limit=15)
                         type(hot_category)
                         # <class 'praw.models.listing.generator.ListingGenerator'>
                         
@@ -53,7 +57,7 @@ for actualSubreddit in subredditList:
                             if not submission.stickied:
                                     body_urls.append(submission.url)
                                 
-                                    for comment in subreddit.comments(limit=25):
+                                    for comment in subreddit.comments(limit=125):
                                     # find just the comments that contains an imgur link
                                     
                                         try:
@@ -94,8 +98,17 @@ for actualSubreddit in subredditList:
                                                     print (msg)
 
 # removing duplicates by converting a list to set()                                              
-body_urls3 = set(body_urls)
-# print out every element in the list
+body_urls3 = set(body_urls) # remove duplicates
+
+# generate html file to display images in iframes
+f= open("new_file.html","w+") 
+f.write("<!DOCTYPE html><html>")
+
 for element in body_urls3:
-    print(element)
+    f.write('<div <a href="{}" target="_blank">{}</a></div> <div style="position:relative;padding-top:56.25%;" id="{}"><iframe width="1100em" height="1100em" name="{}" src="{}" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>'.format(element,element,element,element,element))
+
+f.write("<html>")
+f.close()
+
+print("** Done! **")
 
